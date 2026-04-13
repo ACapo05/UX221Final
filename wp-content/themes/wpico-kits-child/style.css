@@ -1,0 +1,345 @@
+/*
+Theme Name:   Family Kits Child Theme
+Theme URI:    https://familykits.local
+Template:     wpico
+Description:  Warm, family-friendly child theme for the Family Kits platform — connecting kit makers with kit developers.
+Version:      1.0
+Author:       Family Kits
+*/
+
+/* ============================================================
+   GOOGLE FONTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --kits-green:         #2D6A4F;
+  --kits-green-mid:     #40916C;
+  --kits-green-light:   #95D5B2;
+  --kits-green-pale:    #D8F3DC;
+  --kits-orange:        #F4A261;
+  --kits-orange-dark:   #E76F51;
+  --kits-cream:         #FFF8F0;
+  --kits-white:         #FFFFFF;
+  --kits-dark:          #1B4332;
+  --kits-text:          #1A1A1A;
+  --kits-muted:         #5A6472;
+  --kits-border:        #D0E8D8;
+
+  /* Override Pico Sand palette with brand colors */
+  --pico-primary:                    var(--kits-green);
+  --pico-primary-background:         var(--kits-green);
+  --pico-primary-border:             var(--kits-green);
+  --pico-primary-underline:          rgba(45, 106, 79, 0.5);
+  --pico-primary-hover:              var(--kits-green-mid);
+  --pico-primary-hover-background:   var(--kits-green-mid);
+  --pico-primary-hover-border:       var(--kits-green-mid);
+  --pico-primary-focus:              rgba(45, 106, 79, 0.25);
+  --pico-primary-inverse:            #ffffff;
+
+  --pico-background-color:           var(--kits-cream);
+  --pico-card-background-color:      var(--kits-white);
+  --pico-card-sectioning-background-color: #F0F7F4;
+
+  --pico-color:                      var(--kits-text);
+  --pico-muted-color:                var(--kits-muted);
+  --pico-muted-border-color:         var(--kits-border);
+
+  --pico-h1-color:                   var(--kits-dark);
+  --pico-h2-color:                   var(--kits-green);
+  --pico-h3-color:                   var(--kits-green);
+  --pico-h4-color:                   var(--kits-text);
+  --pico-h5-color:                   var(--kits-text);
+  --pico-h6-color:                   var(--kits-muted);
+
+  /* Typography */
+  --pico-font-family:                'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --pico-line-height:                1.75;
+  --pico-font-size:                  16px;
+
+  /* Spacing */
+  --pico-block-spacing-vertical:     2rem;
+}
+
+/* ============================================================
+   BASE TYPOGRAPHY
+   ============================================================ */
+body {
+  background-color: var(--kits-cream);
+  color: var(--kits-text);
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-weight: 900; line-height: 1.15; }
+h2 { font-weight: 800; line-height: 1.2; }
+h3 { font-weight: 700; }
+
+p { line-height: 1.8; }
+
+/* ============================================================
+   SITE HEADER
+   ============================================================ */
+body > header nav ul li a {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+body > header nav ul li small {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+body > header nav a {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ============================================================
+   SITE FOOTER
+   ============================================================ */
+
+/* ============================================================
+   ARTICLE / POST CARDS
+   ============================================================ */
+main.container > article {
+  background: var(--kits-white);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 16px rgba(45, 106, 79, 0.08);
+  border: 1px solid var(--kits-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+main.container > article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(45, 106, 79, 0.14);
+}
+
+article header h1 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--kits-dark);
+  font-size: 2rem;
+}
+
+article header time {
+  color: var(--kits-muted);
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+article img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+[role="button"],
+button,
+input[type="submit"],
+input[type="button"],
+a.button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  color: var(--kits-green);
+}
+
+input, textarea, select {
+  border-radius: 8px !important;
+  border-color: var(--kits-border) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--kits-green) !important;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15) !important;
+}
+
+/* ============================================================
+   HERO SECTION (homepage)
+   ============================================================ */
+.kits-hero {
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  background: linear-gradient(180deg, rgba(149,213,178,0.25) 0%, transparent 100%);
+  border-radius: 16px;
+  margin-bottom: 3rem;
+}
+
+.kits-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--kits-dark);
+  margin-bottom: 1rem;
+}
+
+.kits-hero p {
+  font-size: 1.2rem;
+  color: var(--kits-muted);
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ============================================================
+   KIT CATEGORIES SECTION (homepage)
+   ============================================================ */
+.kits-posts-preview {
+  margin: 3rem 0;
+}
+
+.kits-posts-preview h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.kits-posts-preview .subtitle {
+  text-align: center;
+  color: var(--kits-muted);
+  margin-bottom: 2rem;
+}
+
+.kits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.kit-card {
+  background: var(--kits-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(45,106,79,0.08);
+  border: 1px solid var(--kits-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(45,106,79,0.16);
+}
+
+.kit-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.kit-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+.kit-card-body {
+  padding: 1.25rem;
+}
+
+.kit-card-body h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--kits-dark);
+}
+
+.kit-card-body p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--kits-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PRODUCT POST STYLING
+   ============================================================ */
+.kit-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--kits-green-pale);
+  border-radius: 10px;
+  border-left: 4px solid var(--kits-green);
+}
+
+.kit-product-meta .meta-item {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--kits-dark);
+}
+
+.kit-product-meta .meta-item span {
+  font-weight: 400;
+  color: var(--kits-green);
+}
+
+.kit-includes {
+  background: #f9fffe;
+  border: 1px solid var(--kits-green-light);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.kit-includes h4 {
+  color: var(--kits-green);
+  margin-bottom: 0.75rem;
+}
+
+.kit-includes ul {
+  margin: 0;
+}
+
+.kit-stress-benefit {
+  background: linear-gradient(135deg, var(--kits-orange) 0%, #F4C261 100%);
+  color: white;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.kit-stress-benefit h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .kits-hero { padding: 2.5rem 1rem 2rem; }
+  .kits-grid { grid-template-columns: 1fr; }
+  main.container > article { padding: 1.5rem; }
+}
