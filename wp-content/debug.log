@@ -7997,3 +7997,263 @@ Error occurred at line 4117 in Function <code>handle_error</code>. Error message
  for query SELECT wums.* FROM wp_users wpu
 		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
 		         WHERE wpu.ID = 0 made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, WPEverest\URMembership\Frontend\Frontend->clear_upgrade_data, WPEverest\URMembership\Admin\Repositories\MembersSubscriptionRepository->get_member_subscription, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Apr-2026 01:11:39 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = 'ur_membership'
+				ORDER BY urs.ID DESC</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = :param0 
+				ORDER BY urs.ID DESC | parameters: ur_membership</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such table: wp_ur_membership_subscriptions.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/UX221Final/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/UX221Final/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('SELECT wp.ID as...')
+#2 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Admin/Repositories/MembersRepository.php(78): wpdb->get_results('SELECT wp.ID as...', 'ARRAY_A')
+#3 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/includes/functions-ur-core.php(7471): WPEverest\URMembership\Admin\Repositories\MembersRepository->get_member_membership_by_id(0)
+#4 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(341): ur_check_is_inactive('')
+#5 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#6 /workspaces/UX221Final/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/UX221Final/.wordpress/wp-settings.php(742): do_action('init')
+#8 /workspaces/UX221Final/.wordpress/wp-config.php(107): require_once('/workspaces/UX2...')
+#9 /workspaces/UX221Final/.wordpress/wp-load.php(50): require_once('/workspaces/UX2...')
+#10 /workspaces/UX221Final/.wordpress/wp-blog-header.php(13): require_once('/workspaces/UX2...')
+#11 /workspaces/UX221Final/.wordpress/index.php(17): require('/workspaces/UX2...')
+#12 {main}</pre>
+ for query SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = 'ur_membership'
+				ORDER BY urs.ID DESC made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, ur_check_is_inactive, WPEverest\URMembership\Admin\Repositories\MembersRepository->get_member_membership_by_id, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Apr-2026 01:11:39 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such table: wp_ur_membership_subscriptions.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/UX221Final/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/UX221Final/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('SELECT wums.* F...')
+#2 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Admin/Repositories/MembersSubscriptionRepository.php(33): wpdb->get_results('SELECT wums.* F...', 'ARRAY_A')
+#3 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Frontend/Frontend.php(285): WPEverest\URMembership\Admin\Repositories\MembersSubscriptionRepository->get_member_subscription(0)
+#4 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(341): WPEverest\URMembership\Frontend\Frontend->clear_upgrade_data('')
+#5 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#6 /workspaces/UX221Final/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/UX221Final/.wordpress/wp-settings.php(764): do_action('wp_loaded')
+#8 /workspaces/UX221Final/.wordpress/wp-config.php(107): require_once('/workspaces/UX2...')
+#9 /workspaces/UX221Final/.wordpress/wp-load.php(50): require_once('/workspaces/UX2...')
+#10 /workspaces/UX221Final/.wordpress/wp-blog-header.php(13): require_once('/workspaces/UX2...')
+#11 /workspaces/UX221Final/.wordpress/index.php(17): require('/workspaces/UX2...')
+#12 {main}</pre>
+ for query SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0 made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, WPEverest\URMembership\Frontend\Frontend->clear_upgrade_data, WPEverest\URMembership\Admin\Repositories\MembersSubscriptionRepository->get_member_subscription, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Apr-2026 01:11:45 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = 'ur_membership'
+				ORDER BY urs.ID DESC</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = :param0 
+				ORDER BY urs.ID DESC | parameters: ur_membership</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such table: wp_ur_membership_subscriptions.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/UX221Final/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/UX221Final/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('SELECT wp.ID as...')
+#2 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Admin/Repositories/MembersRepository.php(78): wpdb->get_results('SELECT wp.ID as...', 'ARRAY_A')
+#3 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/includes/functions-ur-core.php(7471): WPEverest\URMembership\Admin\Repositories\MembersRepository->get_member_membership_by_id(0)
+#4 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(341): ur_check_is_inactive('')
+#5 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#6 /workspaces/UX221Final/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/UX221Final/.wordpress/wp-settings.php(742): do_action('init')
+#8 /workspaces/UX221Final/.wordpress/wp-config.php(107): require_once('/workspaces/UX2...')
+#9 /workspaces/UX221Final/.wordpress/wp-load.php(50): require_once('/workspaces/UX2...')
+#10 /workspaces/UX221Final/.wordpress/wp-blog-header.php(13): require_once('/workspaces/UX2...')
+#11 /workspaces/UX221Final/.wordpress/index.php(17): require('/workspaces/UX2...')
+#12 {main}</pre>
+ for query SELECT wp.ID as post_id,
+                urs.ID as subscription_id,
+                -- wo.ID as order_id,
+                urs.user_id,
+                urs.cancel_sub,
+                wp.post_title,
+                wp.post_content,
+                urs.status,
+                urs.trial_start_date,
+                urs.trial_end_date,
+                urs.billing_amount,
+                urs.expiry_date,
+                urs.start_date,
+                urs.next_billing_date,
+                urs.billing_cycle
+				FROM wp_ur_membership_subscriptions AS urs
+				JOIN wp_posts AS wp
+						ON wp.ID = urs.item_id
+				-- LEFT JOIN wp_ur_membership_orders AS wo
+				-- 		ON urs.ID = wo.subscription_id
+				WHERE urs.user_id = 0
+				AND wp.post_type = 'ur_membership'
+				ORDER BY urs.ID DESC made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, ur_check_is_inactive, WPEverest\URMembership\Admin\Repositories\MembersRepository->get_member_membership_by_id, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Apr-2026 01:11:45 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such table: wp_ur_membership_subscriptions.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/UX221Final/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/UX221Final/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('SELECT wums.* F...')
+#2 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Admin/Repositories/MembersSubscriptionRepository.php(33): wpdb->get_results('SELECT wums.* F...', 'ARRAY_A')
+#3 /workspaces/UX221Final/.wordpress/wp-content/plugins/user-registration/modules/membership/includes/Frontend/Frontend.php(285): WPEverest\URMembership\Admin\Repositories\MembersSubscriptionRepository->get_member_subscription(0)
+#4 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(341): WPEverest\URMembership\Frontend\Frontend->clear_upgrade_data('')
+#5 /workspaces/UX221Final/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#6 /workspaces/UX221Final/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/UX221Final/.wordpress/wp-settings.php(764): do_action('wp_loaded')
+#8 /workspaces/UX221Final/.wordpress/wp-config.php(107): require_once('/workspaces/UX2...')
+#9 /workspaces/UX221Final/.wordpress/wp-load.php(50): require_once('/workspaces/UX2...')
+#10 /workspaces/UX221Final/.wordpress/wp-blog-header.php(13): require_once('/workspaces/UX2...')
+#11 /workspaces/UX221Final/.wordpress/index.php(17): require('/workspaces/UX2...')
+#12 {main}</pre>
+ for query SELECT wums.* FROM wp_users wpu
+		         JOIN wp_ur_membership_subscriptions wums ON wpu.ID = wums.user_id
+		         WHERE wpu.ID = 0 made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, WPEverest\URMembership\Frontend\Frontend->clear_upgrade_data, WPEverest\URMembership\Admin\Repositories\MembersSubscriptionRepository->get_member_subscription, WP_SQLite_DB->query, WP_SQLite_DB->print_error
